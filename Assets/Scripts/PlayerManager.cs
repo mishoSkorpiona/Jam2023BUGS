@@ -24,6 +24,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float health = 120;
     public int playerIndex;
 
+    [SerializeField] private Animator _animator;
+
     [SerializeField] private int baseDamage = 10; // attacks are a scale of that number 
 
     [Header("North Attack")]
@@ -77,7 +79,9 @@ public class PlayerManager : MonoBehaviour
         float horizontalSpeed = _rigidbody2D.velocity.x;
         if (Mathf.Abs(horizontalSpeed) > maxSpeed)
             _rigidbody2D.velocity = _rigidbody2D.velocity * Vector2.up + maxSpeed * Mathf.Sign(horizontalSpeed) * Vector2.right;
-
+        
+        
+        _animator.SetFloat("Speed", Mathf.Abs(_rigidbody2D.velocity.x));
         // Flip the player based on movement direction
         if (moveDirection.x > 0.1)
         {
@@ -107,6 +111,8 @@ public class PlayerManager : MonoBehaviour
     void OnJump()
     {
         if (jumpsRemaining <= 0) return;
+        _animator.Play("Jump");
+
 
         float currentStaling = Mathf.Pow(jumpStaling, amountOfJumps - jumpsRemaining);
         _rigidbody2D.AddForce(Vector2.up * jumpForce * currentStaling, ForceMode2D.Impulse);
@@ -124,24 +130,29 @@ public class PlayerManager : MonoBehaviour
 
     void OnAttackNorth()
     {
+        _animator.Play("Attack_North");
         HandleAttack(northAttackCollider);
     }
 
 
     void OnAttackSouth()
     {
+        _animator.Play("Attack_South");
         HandleAttack(southAttackCollider);
     }
     
     
     void OnAttackEast()
     {
+        _animator.Play("Attack_East");
+
         HandleAttack(eastAttackCollider);
     }
 
 
     void OnAttackWest()
     {
+        _animator.Play("Attack_West");
         HandleAttack(westAttackCollider);
     }
 
