@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac626918ba5b944fa34ea1cecfea39e, type: 3}
   m_Name: Dung Beetle Stats
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 3794272047984473319, guid: 0d1183432bb3d9d40b2ec574d4127507,
+  characterPrefab: {fileID: 8569210480489597076, guid: ca8e6893e93b9d04db92f0a670ca5cee,
     type: 3}
   playerUIPrefab: {fileID: 138323194181432415, guid: 2baf0c83d4a6c804184b1c7301ad00fb,
     type: 3}
   maxHealth: 100
-  amountOfJumps: 1
