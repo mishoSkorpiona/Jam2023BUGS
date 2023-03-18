@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     public int playerID;
 
-    CharacterStats playerStats;
+    public CharacterStats playerStats;
 
     PlayerUI myUI;
 
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void SetUpUI()
     {
         FightUI.Instance.AddUI(playerStats.playerUIPrefab);
     }
