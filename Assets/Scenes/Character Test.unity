@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 474199532}
   - component: {fileID: 474199531}
   - component: {fileID: 474199530}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -290,8 +290,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0}
+  maxSpeed: 5
+  groundDistance: 0.52
+  amountOfJumps: 2
   moveSpeed: 500
   jumpForce: 5
+  jumpStaling: 0.65
   _rigidbody2D: {fileID: 0}
   health: 120
   baseDamage: 10
@@ -442,7 +446,7 @@ GameObject:
   - component: {fileID: 728558212}
   - component: {fileID: 728558214}
   - component: {fileID: 728558213}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +605,7 @@ GameObject:
   - component: {fileID: 809233356}
   - component: {fileID: 809233354}
   - component: {fileID: 809233355}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +668,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 892885021}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackNorth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +704,7 @@ GameObject:
   - component: {fileID: 1184975841}
   - component: {fileID: 1184975842}
   - component: {fileID: 1184975843}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
