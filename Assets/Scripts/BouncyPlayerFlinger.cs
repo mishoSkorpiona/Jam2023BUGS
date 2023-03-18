@@ -5,7 +5,8 @@ public class BouncyPlayerFlinger : MonoBehaviour
     public float flingStrength = 2f;
     public Vector2 flingDir;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
 
