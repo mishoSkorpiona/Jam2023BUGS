@@ -3,17 +3,17 @@ using UnityEngine;
 public class BouncyPlayerFlinger : MonoBehaviour
 {
     public float flingStrength = 2f;
-    public Vector3 flingDir;
+    public Vector2 flingDir;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Rigidbody rb = other.GetComponent<Rigidbody>();
+        Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
 
-        if (rb) rb.velocity += flingDir.normalized * flingStrength;
+        if (rb) rb.velocity = flingDir.normalized * flingStrength;
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawLine(transform.position, transform.position + flingStrength * flingDir.normalized);
+        Gizmos.DrawLine(transform.position, transform.position + flingStrength * new Vector3(flingDir.x, flingDir.y).normalized);
     }
 }
