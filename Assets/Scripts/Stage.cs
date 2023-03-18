@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Stage : MonoBehaviour
 {
@@ -10,7 +12,14 @@ public class Stage : MonoBehaviour
     public Transform[] spawnPositions;
     int characterCount;
 
-    public void SpawnCharacters(params CharacterStats[] stats)
+    private void Start()
+    {
+        FightData data = FindObjectOfType<FightData>();
+        if (data)
+            SpawnCharacters(data.players);
+    }
+
+    public void SpawnCharacters(List<CharacterStats> stats)
     {
         foreach (var character in stats)
             SpawnCharacter(character);
@@ -18,13 +27,13 @@ public class Stage : MonoBehaviour
 
     public void SpawnCharacter(CharacterStats stats)
     {
-        GameObject newCharacter = Instantiate(stats.characterPrefab);
+        GameObject newCharacter = Instantiate(stats.characterPrefab, stats.inputModule.transform);
         newCharacter.transform.position = spawnPositions[characterCount].position;
 
         Player newPlayer = newCharacter.GetComponentInChildren<Player>();
         newPlayer.playerID = characterCount;
 
-        trackingCamera.bodies.Add(newPlayer.myRigidbody);
+        if (trackingCamera) trackingCamera.bodies.Add(newPlayer.myRigidbody);
 
         characterCount++;
     }
