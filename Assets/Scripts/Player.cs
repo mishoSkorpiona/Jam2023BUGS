@@ -19,11 +19,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetUpUI()
-    {
-        FightUI.Instance.AddUI(playerStats.playerUIPrefab);
-    }
-
     public void TakeDamage(float damageAmount)
     {
         Damage -= damageAmount;

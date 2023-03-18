@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fight Scene.unity
     guid: 5dadfe85802161a43b18cd41b703e8c7
+  - enabled: 1
+    path: Assets/Scenes/Stages/Battlefield.unity
+    guid: 3de686807b44bc148af15e103025a745
+  - enabled: 1
+    path: Assets/Scenes/Stages/Bouncy Final Destination.unity
+    guid: ed8ef31972fb0c14594b2f58d786049e
   m_configObjects: {}

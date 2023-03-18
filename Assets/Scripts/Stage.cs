@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
+    public Color gizmoColour;
+    public bool showZZero;
+
     public Transform[] spawnPositions;
     int characterCount;
 
@@ -18,8 +21,13 @@ public class Stage : MonoBehaviour
 
         Player newPlayer = newCharacter.GetComponentInChildren<Player>();
         newPlayer.playerID = characterCount;
-        newPlayer.SetUpUI();
 
         characterCount++;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = gizmoColour;
+        if (showZZero) Gizmos.DrawCube(Vector3.zero, new Vector3(100, 100, 0));
     }
 }

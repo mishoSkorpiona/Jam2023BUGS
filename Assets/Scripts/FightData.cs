@@ -5,6 +5,7 @@ public class FightData : MonoBehaviour
 {
     public bool loadFightSceneOnStart;
     public CharacterStats[] players;
+    public int stageID = 2;
 
     private void Start()
     {

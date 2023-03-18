@@ -3,11 +3,11 @@ using UnityEngine;
 public class FightUI : MonoBehaviour
 {
     public RectTransform playerCharecterUIParent;
-    public static FightUI Instance;
 
-    private void Awake()
+    public void SetupUI(CharacterStats[] characterStats)
     {
-        Instance = this;
+        foreach (var characterStat in characterStats)
+            AddUI(characterStat.playerUIPrefab);
     }
 
     public PlayerUI AddUI(GameObject uiPrefab)
