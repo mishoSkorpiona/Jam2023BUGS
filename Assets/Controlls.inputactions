@@ -171,6 +171,17 @@
                 },
                 {
                     "name": "",
+                    "id": "dd03ba60-019c-4c05-a231-48a523e6ecc5",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackSouth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b2de37f8-b406-4d51-9782-b3d9d184766c",
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",

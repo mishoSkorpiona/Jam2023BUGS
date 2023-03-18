@@ -22,5 +22,6 @@ public class ColliderData : MonoBehaviour
         Vector2 directionVector = Quaternion.Euler(0, 0, knockbackDirection) * Vector2.up;
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + (Vector3)directionVector * knockbackPower);
+        Gizmos.DrawWireSphere(transform.position, GetComponent<CircleCollider2D>().radius);
     }
 }

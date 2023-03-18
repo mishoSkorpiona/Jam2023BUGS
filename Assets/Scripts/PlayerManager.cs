@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float jumpForce = 5;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float health = 120;
+    public int playerIndex;
 
     [SerializeField] private int baseDamage = 10; // attacks are a scale of that number 
 
@@ -19,8 +20,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float northAttackDamage = 10;
     [SerializeField] private float northAttackStun = 10;
 
-    // Knockback variables
+    
+    
+    [Header("South Attack")]
+    [SerializeField] private Collider2D[] southAttackCollider;
     [SerializeField] private float southAttackKnockbackPower = 10;
+    [SerializeField] private float southAttackDamage = 10;
+    [SerializeField] private float southAttackStun = 10;
+    
+    
+    // Knockback variables
     [SerializeField] private float eastAttackKnockbackPower = 10;
     [SerializeField] private float westAttackKnockbackPower = 10;
 
@@ -45,11 +54,15 @@ public class PlayerManager : MonoBehaviour
         // Flip the player based on movement direction
         if (moveDirection.x > 0.1)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            Vector3 newRotation = new Vector3(0, 0, 0);
+            transform.eulerAngles = newRotation;
+            
         }
         else if (moveDirection.x < -0.1)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            Vector3 newRotation = new Vector3(0, 180, 0);
+            transform.eulerAngles = newRotation;
+            
         }
     }
 
@@ -74,6 +87,10 @@ public class PlayerManager : MonoBehaviour
 
     void OnAttackNorth()
     {
+        HandleAttackNorth();
+    }
+    void HandleAttackNorth()
+    {
         // Enable the north attack collider(s)
         foreach (Collider2D collider in northAttackCollider)
         {
@@ -88,6 +105,7 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < numColliders; i++)
         {
             Collider2D enemyCollider = hitEnemies[i];
+            
             PlayerManager enemy = enemyCollider.GetComponent<PlayerManager>();
             if (enemy != null)
             {
@@ -109,13 +127,67 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
+ 
+
         // Disable the north attack collider(s)
         foreach (Collider2D collider in northAttackCollider)
         {
             collider.enabled = false;
         }
     }
+    
+    
+    
+    void OnAttackSouth()
+    {
+        HandleAttackSouth();
+    }
+    void HandleAttackSouth()
+    {
+        // Enable the south attack collider(s)
+        foreach (Collider2D collider in southAttackCollider)
+        {
+            collider.enabled = true;
+        }
 
+        // Check which enemy was hit by the collider(s)
+        Collider2D[] hitEnemies = new Collider2D[10];
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.useTriggers = true;
+        int numColliders = Physics2D.OverlapCollider(southAttackCollider[0], filter, hitEnemies);
+        
+        for (int i = 0; i < numColliders; i++)
+        {
+            Collider2D enemyCollider = hitEnemies[i];
+            PlayerManager enemy = enemyCollider.GetComponent<PlayerManager>();
+            if (enemy != null)
+            {
+                // Calculate knockback direction and power
+                ColliderData colliderData = southAttackCollider[i].GetComponent<ColliderData>();
+                Vector2 knockbackDirection = Quaternion.Euler(0, 0, colliderData.knockbackDirection) * Vector2.up;
+                float knockbackPower = colliderData.knockbackPower;
+
+                // Apply knockback to the enemy
+                enemy.ApplyKnockback(knockbackDirection, knockbackPower);
+
+                // Apply damage to the enemy
+                float damage = baseDamage * colliderData.damagePercentage;
+                enemy.TakeDamage(damage);
+
+                // Apply stun to the enemy
+                float stunDuration = colliderData.stunDuration;
+                enemy.ApplyStun(stunDuration);
+            }
+        }
+
+ 
+
+        // Disable the north attack collider(s)
+        foreach (Collider2D collider in southAttackCollider)
+        {
+            collider.enabled = false;
+        }
+    }
 
 
     public void TakeDamage(float damage)
