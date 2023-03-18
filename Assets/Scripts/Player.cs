@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 
     public CharacterStats playerStats;
 
+    public Rigidbody2D myRigidbody;
+
     PlayerUI myUI;
 
     private float _damage;

@@ -5,6 +5,8 @@ public class Stage : MonoBehaviour
     public Color gizmoColour;
     public bool showZZero;
 
+    public TrackingCamera trackingCamera;
+
     public Transform[] spawnPositions;
     int characterCount;
 
@@ -21,6 +23,8 @@ public class Stage : MonoBehaviour
 
         Player newPlayer = newCharacter.GetComponentInChildren<Player>();
         newPlayer.playerID = characterCount;
+
+        trackingCamera.bodies.Add(newPlayer.myRigidbody);
 
         characterCount++;
     }

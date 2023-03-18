@@ -6,8 +6,20 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private Vector2 moveDirection;
+    public float maxSpeed = 5f;
+
+    public float groundDistance = 0.5f;
+    bool grounded;
+    public int amountOfJumps = 1;
+    int jumpsRemaining;
+    float lastGroundedJumpTime;
+    float jumpGroundedIgnoreTime = 0.2f;
+
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float jumpForce = 5;
+    [SerializeField] private float jumpStaling = 0.65f;
+    
+
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float health = 120;
     public int playerIndex;
@@ -51,6 +63,11 @@ public class PlayerManager : MonoBehaviour
     {
         _rigidbody2D.AddForce(moveDirection * moveSpeed * Time.deltaTime);
 
+        //limit thier horizontal speed
+        float horizontalSpeed = _rigidbody2D.velocity.x;
+        if (Mathf.Abs(horizontalSpeed) > maxSpeed)
+            _rigidbody2D.velocity = _rigidbody2D.velocity * Vector2.up + maxSpeed * Mathf.Sign(horizontalSpeed) * Vector2.right;
+
         // Flip the player based on movement direction
         if (moveDirection.x > 0.1)
         {
@@ -64,6 +81,11 @@ public class PlayerManager : MonoBehaviour
             transform.eulerAngles = newRotation;
             
         }
+
+        grounded = Physics2D.Raycast(transform.position, Vector2.down, groundDistance, 1);
+
+        //the timer in here is to make sure it doesn't think we're grounded while we're jumping off the ground
+        if (grounded && Time.time > lastGroundedJumpTime + jumpGroundedIgnoreTime) jumpsRemaining = amountOfJumps;
     }
 
     void OnMove(InputValue input)
@@ -74,8 +96,13 @@ public class PlayerManager : MonoBehaviour
 
     void OnJump()
     {
-        // Implement ground check and a double jump where the second one is 65% of the force 
-        _rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        if (jumpsRemaining <= 0) return;
+
+        float currentStaling = Mathf.Pow(jumpStaling, amountOfJumps - jumpsRemaining);
+        _rigidbody2D.AddForce(Vector2.up * jumpForce * currentStaling, ForceMode2D.Impulse);
+        jumpsRemaining--;
+        
+        if (grounded) lastGroundedJumpTime = Time.time;
     }
 
     void OnShield()
@@ -204,6 +231,10 @@ public class PlayerManager : MonoBehaviour
     {
         _rigidbody2D.AddForce(direction *  power, ForceMode2D.Impulse);
     }
-    
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundDistance);
+    }
 }
