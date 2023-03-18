@@ -7,13 +7,14 @@ public class FightUI : MonoBehaviour
     public void SetupUI(CharacterStats[] characterStats)
     {
         foreach (var characterStat in characterStats)
-            AddUI(characterStat.playerUIPrefab);
+            AddUI(characterStat);
     }
 
-    public PlayerUI AddUI(GameObject uiPrefab)
+    public PlayerUI AddUI(CharacterStats characterStats)
     {
-        GameObject newUI = Instantiate(uiPrefab, playerCharecterUIParent);
+        GameObject newUI = Instantiate(characterStats.playerUIPrefab, playerCharecterUIParent);
         PlayerUI uiScript = newUI.GetComponent<PlayerUI>();
+        uiScript.SetDamage(characterStats.maxHealth);
 
         return uiScript;
     }

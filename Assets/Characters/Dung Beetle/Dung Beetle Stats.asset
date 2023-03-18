@@ -16,3 +16,4 @@ MonoBehaviour:
     type: 3}
   playerUIPrefab: {fileID: 138323194181432415, guid: 2baf0c83d4a6c804184b1c7301ad00fb,
     type: 3}
+  maxHealth: 100
