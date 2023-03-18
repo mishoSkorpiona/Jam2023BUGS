@@ -4,7 +4,7 @@ public class Player : MonoBehaviour
 {
     public int playerID;
 
-    CharacterStats playerStats;
+    public CharacterStats playerStats;
 
     PlayerUI myUI;
 
@@ -17,11 +17,6 @@ public class Player : MonoBehaviour
             Damage = value;
             myUI.SetDamage(_damage);
         }
-    }
-
-    private void Start()
-    {
-        FightUI.Instance.AddUI(playerStats.playerUIPrefab);
     }
 
     public void TakeDamage(float damageAmount)

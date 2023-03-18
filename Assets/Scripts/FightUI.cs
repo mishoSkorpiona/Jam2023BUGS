@@ -3,17 +3,18 @@ using UnityEngine;
 public class FightUI : MonoBehaviour
 {
     public RectTransform playerCharecterUIParent;
-    public static FightUI Instance;
 
-    private void Awake()
+    public void SetupUI(CharacterStats[] characterStats)
     {
-        Instance = this;
+        foreach (var characterStat in characterStats)
+            AddUI(characterStat);
     }
 
-    public PlayerUI AddUI(GameObject uiPrefab)
+    public PlayerUI AddUI(CharacterStats characterStats)
     {
-        GameObject newUI = Instantiate(uiPrefab, playerCharecterUIParent);
+        GameObject newUI = Instantiate(characterStats.playerUIPrefab, playerCharecterUIParent);
         PlayerUI uiScript = newUI.GetComponent<PlayerUI>();
+        uiScript.SetDamage(characterStats.maxHealth);
 
         return uiScript;
     }
