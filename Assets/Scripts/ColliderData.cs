@@ -15,13 +15,15 @@ public class ColliderData : MonoBehaviour
 
     [Range(0.0f, 1.2f)]
     public float stunDuration = 0.4f;
+    
+    [SerializeField] private Color _color;
 
     void OnDrawGizmos()
     {
         // Draw a gizmo to show the direction and power of the knockback
         Vector2 directionVector = Quaternion.Euler(0, 0, knockbackDirection) * Vector2.up;
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3)directionVector * knockbackPower);
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3)directionVector * knockbackPower*0.2f);
         Gizmos.DrawWireSphere(transform.position, GetComponent<CircleCollider2D>().radius);
     }
 }

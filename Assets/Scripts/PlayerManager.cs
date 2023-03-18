@@ -41,9 +41,19 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float southAttackStun = 10;
     
     
-    // Knockback variables
+    [Header("East Attack")]
+    [SerializeField] private Collider2D[] eastAttackCollider;
     [SerializeField] private float eastAttackKnockbackPower = 10;
+    [SerializeField] private float eastAttackDamage = 10;
+    [SerializeField] private float eastAttackStun = 10;
+    
+    [Header("West Attack")]
+    [SerializeField] private Collider2D[] westAttackCollider;
     [SerializeField] private float westAttackKnockbackPower = 10;
+    [SerializeField] private float westAttackDamage = 10;
+    [SerializeField] private float westAttackStun = 10;
+    
+    
 
     // Start is called before the first frame update
     void Start()
@@ -114,65 +124,33 @@ public class PlayerManager : MonoBehaviour
 
     void OnAttackNorth()
     {
-        HandleAttackNorth();
+        HandleAttack(northAttackCollider);
     }
-    void HandleAttackNorth()
-    {
-        // Enable the north attack collider(s)
-        foreach (Collider2D collider in northAttackCollider)
-        {
-            collider.enabled = true;
-        }
 
-        // Check which enemy was hit by the collider(s)
-        Collider2D[] hitEnemies = new Collider2D[10];
-        ContactFilter2D filter = new ContactFilter2D();
-        filter.useTriggers = true;
-        int numColliders = Physics2D.OverlapCollider(northAttackCollider[0], filter, hitEnemies);
-        for (int i = 0; i < numColliders; i++)
-        {
-            Collider2D enemyCollider = hitEnemies[i];
-            
-            PlayerManager enemy = enemyCollider.GetComponent<PlayerManager>();
-            if (enemy != null)
-            {
-                // Calculate knockback direction and power
-                ColliderData colliderData = northAttackCollider[i].GetComponent<ColliderData>();
-                Vector2 knockbackDirection = Quaternion.Euler(0, 0, colliderData.knockbackDirection) * Vector2.up;
-                float knockbackPower = colliderData.knockbackPower;
 
-                // Apply knockback to the enemy
-                enemy.ApplyKnockback(knockbackDirection, knockbackPower);
-
-                // Apply damage to the enemy
-                float damage = baseDamage * colliderData.damagePercentage;
-                enemy.TakeDamage(damage);
-
-                // Apply stun to the enemy
-                float stunDuration = colliderData.stunDuration;
-                enemy.ApplyStun(stunDuration);
-            }
-        }
-
- 
-
-        // Disable the north attack collider(s)
-        foreach (Collider2D collider in northAttackCollider)
-        {
-            collider.enabled = false;
-        }
-    }
-    
-    
-    
     void OnAttackSouth()
     {
-        HandleAttackSouth();
+        HandleAttack(southAttackCollider);
     }
-    void HandleAttackSouth()
+    
+    
+    void OnAttackEast()
     {
-        // Enable the south attack collider(s)
-        foreach (Collider2D collider in southAttackCollider)
+        HandleAttack(eastAttackCollider);
+    }
+
+
+    void OnAttackWest()
+    {
+        HandleAttack(westAttackCollider);
+    }
+
+
+    
+    void HandleAttack(Collider2D[] colliders)
+    {
+        // Enable the attack collider(s)
+        foreach (Collider2D collider in colliders)
         {
             collider.enabled = true;
         }
@@ -181,16 +159,18 @@ public class PlayerManager : MonoBehaviour
         Collider2D[] hitEnemies = new Collider2D[10];
         ContactFilter2D filter = new ContactFilter2D();
         filter.useTriggers = true;
-        int numColliders = Physics2D.OverlapCollider(southAttackCollider[0], filter, hitEnemies);
-        
+
+        int numColliders = Physics2D.OverlapCollider(colliders[^1], filter, hitEnemies);
         for (int i = 0; i < numColliders; i++)
         {
             Collider2D enemyCollider = hitEnemies[i];
+            if (hitEnemies[i].gameObject == this.gameObject) continue;
+
             PlayerManager enemy = enemyCollider.GetComponent<PlayerManager>();
             if (enemy != null)
             {
                 // Calculate knockback direction and power
-                ColliderData colliderData = southAttackCollider[i].GetComponent<ColliderData>();
+                ColliderData colliderData = colliders[^1].GetComponent<ColliderData>();
                 Vector2 knockbackDirection = Quaternion.Euler(0, 0, colliderData.knockbackDirection) * Vector2.up;
                 float knockbackPower = colliderData.knockbackPower;
 
@@ -207,14 +187,13 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
- 
-
-        // Disable the north attack collider(s)
-        foreach (Collider2D collider in southAttackCollider)
+        // Disable the attack collider(s)
+        foreach (Collider2D collider in colliders)
         {
             collider.enabled = false;
         }
     }
+
 
 
     public void TakeDamage(float damage)
