@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FightUI : MonoBehaviour
 {
     public RectTransform playerCharecterUIParent;
 
-    public void SetupUI(CharacterStats[] characterStats)
+    public void SetupUI(List<CharacterStats> characterStats)
     {
         foreach (var characterStat in characterStats)
             AddUI(characterStat);
