@@ -15,15 +15,22 @@ public class PlayerManager : MonoBehaviour
     float lastGroundedJumpTime;
     float jumpGroundedIgnoreTime = 0.2f;
 
+    private float stunDuration;
+
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float jumpForce = 5;
     [SerializeField] private float jumpStaling = 0.65f;
+    [SerializeField] private bool isShielded;
+    [SerializeField] private bool isStunned;
     
 
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float health = 120;
     public int playerIndex;
 
+
+    [SerializeField] private GameObject poopBall = null;
+    [SerializeField]private Transform shootpoint = null;
     [SerializeField] private Animator _animator;
 
     [SerializeField] private int baseDamage = 10; // attacks are a scale of that number 
@@ -34,8 +41,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float northAttackDamage = 10;
     [SerializeField] private float northAttackStun = 10;
 
-    
-    
     [Header("South Attack")]
     [SerializeField] private Collider2D[] southAttackCollider;
     [SerializeField] private float southAttackKnockbackPower = 10;
@@ -60,8 +65,6 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Disable all attack colliders at the start
-        //northAttackCollider.enabled = false;
     }
 
     // Update is called once per frame
@@ -130,13 +133,15 @@ public class PlayerManager : MonoBehaviour
 
     void OnAttackNorth()
     {
+        if (isStunned) return;
         _animator.Play("Attack_North");
         //HandleAttack(northAttackCollider);
     }
 
 
     void OnAttackSouth()
-    {
+    {       
+        if (isStunned) return;
         _animator.Play("Attack_South");
         //HandleAttack(southAttackCollider);
     }
@@ -144,14 +149,15 @@ public class PlayerManager : MonoBehaviour
     
     void OnAttackEast()
     {
+        if (isStunned) return;
         _animator.Play("Attack_East");
-
         //HandleAttack(eastAttackCollider);
     }
 
 
     void OnAttackWest()
     {
+        if (isStunned) return;
         _animator.Play("Attack_West");
         //HandleAttack(westAttackCollider);
     }
@@ -225,12 +231,22 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isShielded) return;
         health -= damage;
     }
 
     public void ApplyStun(float stunTime)
     {
-        
+        isStunned = true;
+        stunDuration = stunTime;
+    }
+
+    void UnStun()
+    {
+        if (stunDuration > 0)
+            stunDuration -= Time.deltaTime;
+        if (stunDuration < 0 || isStunned)
+            isStunned = false;
     }
 
     public void ApplyKnockback(Vector2 direction, float power)
@@ -248,6 +264,21 @@ public class PlayerManager : MonoBehaviour
     public void Smoke(GameObject SmokeBomb)
     {
         Instantiate(SmokeBomb, transform.position - new Vector3(0,0.5f,0), Quaternion.identity);
+
+    }
+    
+    
+    public void PoopBall()
+    {
+        
+        if (poopBall == null||shootpoint==null) return;
+        var poopBallShot = Instantiate(poopBall, shootpoint.position, Quaternion.identity);
+        poopBallShot.GetComponent<Rigidbody2D>().AddForce(transform.right * 5, ForceMode2D.Impulse);
+    }
+
+    void smallLeap()
+    {
+        _rigidbody2D.AddForce(Vector2.up * jumpForce *0.4f, ForceMode2D.Impulse);
 
     }
 }
