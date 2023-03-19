@@ -1,15 +1,35 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class MenuScript : MonoBehaviour
 {
+    public playerSelectUI[] playerSelectUIs;
     public Transform[] charactersToChooseFrom;
+    public RectTransform[] selectorImages;
     public List<CharacterSelector> selectors;
     public List<PlayerInput> playerInputs;
     public CharacterStats[] stats;
 
+    public Image startFight;
+
     public FightData fightData;
+
+    int charCount = 0;
+
+    public void getMyUI(CharacterSelector selector)
+    {
+        selector.selector = selectorImages[charCount];
+        selector.selector.GetComponent<Image>().color = Color.white;
+        selector.myUI = playerSelectUIs[charCount];
+
+        charCount++;
+
+        if (charCount > 1)
+            startFight.color = Color.white;
+
+    }
 
     public void SetCorrectParent(PlayerInput playerInput)
     {
@@ -21,6 +41,8 @@ public class MenuScript : MonoBehaviour
     [ContextMenu("Start Fight")]
     public void StartFight()
     {
+        if (charCount < 2) return;
+
         for (int i = 0; i < selectors.Count; i++)
         {
 

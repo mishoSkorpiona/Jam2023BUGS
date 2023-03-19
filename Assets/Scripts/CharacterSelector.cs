@@ -3,7 +3,13 @@ using UnityEngine.InputSystem;
 
 public class CharacterSelector : MonoBehaviour
 {
+    public MenuScript menu;
+
+    public RectTransform selector;
+
+    public playerSelectUI myUI;
     public Transform[] characters;
+    public CharacterStats[] stats;
     public int _currentChar;
     public int currentChar
     {
@@ -13,7 +19,7 @@ public class CharacterSelector : MonoBehaviour
             _currentChar = value;
             _currentChar %= characters.Length;
             if (_currentChar < 0) _currentChar = characters.Length - 1;
-            transform.position = characters[_currentChar].position;
+            selector.position = characters[_currentChar].position;
         }
     }
     public float minHorizontal = 0.3f;
@@ -23,11 +29,16 @@ public class CharacterSelector : MonoBehaviour
 
     private void Start()
     {
-        MenuScript menu = FindObjectOfType<MenuScript>();
+        menu = FindObjectOfType<MenuScript>();
         characters = menu.charactersToChooseFrom;
+        stats = menu.stats;
         menu.selectors.Add(this);
 
+        menu.getMyUI(this);
+
         currentChar = 0;
+
+        myUI.SetCharacter(stats[currentChar]);
     }
 
     void OnMove(InputValue input)
@@ -48,5 +59,12 @@ public class CharacterSelector : MonoBehaviour
             currentChar++;
         else
             currentChar--;
+
+        myUI.SetCharacter(stats[currentChar]);
+    }
+
+    void OnJump()
+    {
+        menu.StartFight();
     }
 }
