@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
+    public Player player;
+
     [SerializeField] private Vector2 moveDirection;
     public float maxSpeed = 5f;
 
@@ -232,6 +234,7 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        player.TakeDamage(damage);
         if (isShielded) return;
         health -= damage;
     }

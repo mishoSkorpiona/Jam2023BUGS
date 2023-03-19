@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 3858816653176077206}
   - component: {fileID: 3858816653176077207}
   - component: {fileID: 1514981637447285634}
+  - component: {fileID: 8073525521932394705}
   m_Layer: 0
   m_Name: Mantis
   m_TagString: Player
@@ -521,6 +522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e780c3b5ebc59a458a4e0ff3e828c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 8073525521932394705}
   moveDirection: {x: 0, y: 0}
   maxSpeed: 5
   groundDistance: 0.5
@@ -528,9 +530,13 @@ MonoBehaviour:
   moveSpeed: 500
   jumpForce: 5
   jumpStaling: 0.65
+  isShielded: 0
+  isStunned: 0
   _rigidbody2D: {fileID: 0}
   health: 120
   playerIndex: 0
+  poopBall: {fileID: 0}
+  shootpoint: {fileID: 0}
   _animator: {fileID: 1514981637447285634}
   baseDamage: 10
   northAttackCollider:
@@ -602,6 +608,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8073525521932394705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3858816653176077204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec92460f3205839458218b59fbd2863e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 0
+  playerStats: {fileID: 11400000, guid: f7820a60bba0e9a46930b4f55dd717f1, type: 2}
+  myRigidbody: {fileID: 3858816653176077207}
 --- !u!1 &3858816653525820670
 GameObject:
   m_ObjectHideFlags: 0
