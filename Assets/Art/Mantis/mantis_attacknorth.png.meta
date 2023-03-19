@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a824d8f659a1487458717f5e1223d3fc
+guid: d60feb4c6cd54ad4292cc8d24be52836
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 600
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BallShield_SpriteSheet_0
+      name: mantis_attacknorth_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 985
-        height: 1000
+        width: 1000
+        height: 1008
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09d6d27848a21b94389aa42c0f80b028
-      internalID: 161609195
+      spriteID: d8ef7aad681dcab4e9c7c7fc23d64e0d
+      internalID: -1016321045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BallShield_SpriteSheet_1
+      name: mantis_attacknorth_1
       rect:
         serializedVersion: 2
-        x: 985
+        x: 1000
         y: 0
-        width: 985
-        height: 1000
+        width: 1000
+        height: 1008
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9e746479d371d946a47acde6e11d56a
-      internalID: 362647539
+      spriteID: 395e5a386572c2b4b993d776d63f1596
+      internalID: 1906904019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BallShield_SpriteSheet_2
+      name: mantis_attacknorth_2
       rect:
         serializedVersion: 2
-        x: 1970
+        x: 2000
         y: 0
-        width: 985
-        height: 1000
+        width: 1000
+        height: 1008
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a64e00f692f752546a296b55330c13c7
-      internalID: -338648474
+      spriteID: e8e4cafd2d6679c4caff767f69d39534
+      internalID: 1823978830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BallShield_SpriteSheet_3
+      name: mantis_attacknorth_3
       rect:
         serializedVersion: 2
-        x: 2955
+        x: 3000
         y: 0
-        width: 985
-        height: 1000
+        width: 1000
+        height: 1008
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90ac1cbd2feb8044083194477951df06
-      internalID: 1128154248
+      spriteID: 39cf4885fd0cb6b448dd6b85afe28e75
+      internalID: 1045318630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BallShield_SpriteSheet_4
+      name: mantis_attacknorth_4
       rect:
         serializedVersion: 2
-        x: 3940
+        x: 4000
         y: 0
-        width: 985
-        height: 1000
+        width: 1000
+        height: 1008
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +203,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70c2d258e6985aa4cb71cb38859bf575
-      internalID: -1756427919
+      spriteID: 680c1a390eb2b9a4d9d8fa94daf0475b
+      internalID: 1960859490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mantis_attacknorth_5
+      rect:
+        serializedVersion: 2
+        x: 5000
+        y: 0
+        width: 1000
+        height: 1008
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e94002da19cc5040b5f79de4cdabacc
+      internalID: -1859991609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mantis_attacknorth_6
+      rect:
+        serializedVersion: 2
+        x: 6000
+        y: 0
+        width: 1000
+        height: 1008
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72361d4d2988190478bc7b9188088168
+      internalID: 1104550946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mantis_attacknorth_7
+      rect:
+        serializedVersion: 2
+        x: 7000
+        y: 0
+        width: 1000
+        height: 1008
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66dfcf2f07ad71741a7eaacda16374bd
+      internalID: 1757908641
       vertices: []
       indices: 
       edges: []
@@ -212,7 +275,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0b81264f019e6974cbfb859272449486
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -220,11 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BallShield_SpriteSheet_0: 161609195
-      BallShield_SpriteSheet_1: 362647539
-      BallShield_SpriteSheet_2: -338648474
-      BallShield_SpriteSheet_3: 1128154248
-      BallShield_SpriteSheet_4: -1756427919
+      mantis_attacknorth_0: -1016321045
+      mantis_attacknorth_1: 1906904019
+      mantis_attacknorth_2: 1823978830
+      mantis_attacknorth_3: 1045318630
+      mantis_attacknorth_4: 1960859490
+      mantis_attacknorth_5: -1859991609
+      mantis_attacknorth_6: 1104550946
+      mantis_attacknorth_7: 1757908641
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

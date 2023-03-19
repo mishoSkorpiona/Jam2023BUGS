@@ -131,14 +131,14 @@ public class PlayerManager : MonoBehaviour
     void OnAttackNorth()
     {
         _animator.Play("Attack_North");
-        HandleAttack(northAttackCollider);
+        //HandleAttack(northAttackCollider);
     }
 
 
     void OnAttackSouth()
     {
         _animator.Play("Attack_South");
-        HandleAttack(southAttackCollider);
+        //HandleAttack(southAttackCollider);
     }
     
     
@@ -146,20 +146,36 @@ public class PlayerManager : MonoBehaviour
     {
         _animator.Play("Attack_East");
 
-        HandleAttack(eastAttackCollider);
+        //HandleAttack(eastAttackCollider);
     }
 
 
     void OnAttackWest()
     {
         _animator.Play("Attack_West");
-        HandleAttack(westAttackCollider);
+        //HandleAttack(westAttackCollider);
     }
 
-
-    
-    void HandleAttack(Collider2D[] colliders)
+    void AttackNorht()
     {
+        HandleAttack(northAttackCollider);
+    }    
+    void AttackWest()
+    {
+        HandleAttack(westAttackCollider);
+    }    
+    void AttackEast()
+    {
+        HandleAttack(eastAttackCollider);
+    }
+    void AttackSouth()
+    {
+        HandleAttack(southAttackCollider);
+    }
+
+    public void HandleAttack(Collider2D[] colliders)
+    {
+        Debug.Log("Engage Colliders");
         // Enable the attack collider(s)
         foreach (Collider2D collider in colliders)
         {
@@ -226,5 +242,12 @@ public class PlayerManager : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundDistance);
+    }
+
+
+    public void Smoke(GameObject SmokeBomb)
+    {
+        Instantiate(SmokeBomb, transform.position - new Vector3(0,0.5f,0), Quaternion.identity);
+
     }
 }
