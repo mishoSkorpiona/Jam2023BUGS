@@ -1783,17 +1783,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dung Beetle
       objectReference: {fileID: 0}
-    - target: {fileID: 1312802274039972315, guid: 9341b7e2dc3ed494798c5c0ebfaa1a5c,
-        type: 3}
-      propertyPath: poopBall
-      value: 
-      objectReference: {fileID: 4413745557141004626, guid: afe199f8e85891d4fa9d14eb225b7768,
-        type: 3}
-    - target: {fileID: 1312802274039972315, guid: 9341b7e2dc3ed494798c5c0ebfaa1a5c,
-        type: 3}
-      propertyPath: shootpoint
-      value: 
-      objectReference: {fileID: 4192552068363471446}
     - target: {fileID: 1312802274039972319, guid: 9341b7e2dc3ed494798c5c0ebfaa1a5c,
         type: 3}
       propertyPath: m_RootOrder
@@ -1848,21 +1837,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653277186096473141, guid: 9341b7e2dc3ed494798c5c0ebfaa1a5c,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653277186096473141, guid: 9341b7e2dc3ed494798c5c0ebfaa1a5c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.392
-      objectReference: {fileID: 0}
-    - target: {fileID: 3653277186096473143, guid: 9341b7e2dc3ed494798c5c0ebfaa1a5c,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9341b7e2dc3ed494798c5c0ebfaa1a5c, type: 3}
@@ -1946,10 +1920,4 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 3858816653176077207, guid: fca8ddbc81466da40881b131f31489e9,
     type: 3}
   m_PrefabInstance: {fileID: 1514981638069971219}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4192552068363471446 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3653277186096473141, guid: 9341b7e2dc3ed494798c5c0ebfaa1a5c,
-    type: 3}
-  m_PrefabInstance: {fileID: 620902849331850851}
   m_PrefabAsset: {fileID: 0}

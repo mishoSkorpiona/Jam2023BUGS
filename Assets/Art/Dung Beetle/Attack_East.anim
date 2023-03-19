@@ -17,21 +17,60 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
-  m_SampleRate: 60
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: -928327396, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - time: 0.055555556
+      value: {fileID: -1689690112, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - time: 0.11111111
+      value: {fileID: 1154980849, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - time: 0.16666667
+      value: {fileID: -1121823977, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - time: 0.22222222
+      value: {fileID: -1541635905, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - time: 0.2777778
+      value: {fileID: 589389967, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - time: 0.33333334
+      value: {fileID: 365880859, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - time: 0.3888889
+      value: {fileID: -823938147, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - time: 0.44444445
+      value: {fileID: -1249665552, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 18
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: -928327396, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - {fileID: -1689690112, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - {fileID: 1154980849, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - {fileID: -1121823977, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - {fileID: -1541635905, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - {fileID: 589389967, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - {fileID: 365880859, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - {fileID: -823938147, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
+    - {fileID: -1249665552, guid: 2a1b788aebd01b04abfe4f499528e9ec, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -50,4 +89,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.3888889
+    functionName: PoopBall
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 5
+    intParameter: 0
+    messageOptions: 0

@@ -71,6 +71,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        if (!isStunned)
         HandleMovement();
     }
 
@@ -162,7 +163,7 @@ public class PlayerManager : MonoBehaviour
         //HandleAttack(westAttackCollider);
     }
 
-    void AttackNorht()
+    void AttackNorth()
     {
         HandleAttack(northAttackCollider);
     }    
@@ -268,7 +269,7 @@ public class PlayerManager : MonoBehaviour
     }
     
     
-    public void PoopBall()
+    public void PoopBall(float force)
     {
         
         if (poopBall == null||shootpoint==null) return;
