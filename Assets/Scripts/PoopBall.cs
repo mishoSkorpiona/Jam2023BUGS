@@ -40,5 +40,6 @@ public class PoopBall : MonoBehaviour
     void DealDamage(GameObject player)
     {
         player.GetComponent<PlayerManager>().TakeDamage(damage);
+        Destroy(this);
     }
 }

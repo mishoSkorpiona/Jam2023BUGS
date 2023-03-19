@@ -12,11 +12,14 @@ public class PlayerManager : MonoBehaviour
 
     public float groundDistance = 0.5f;
     bool grounded;
+    bool invinsible;
     public int amountOfJumps = 1;
     int jumpsRemaining;
     float lastGroundedJumpTime;
     float jumpGroundedIgnoreTime = 0.2f;
-
+    
+    
+    
     private float stunDuration;
 
     [SerializeField] private float moveSpeed = 5;
@@ -75,6 +78,7 @@ public class PlayerManager : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         if (!isStunned)
         HandleMovement();
+        _animator.SetBool("isShielded", isShielded);
     }
 
     void HandleMovement()
@@ -127,12 +131,16 @@ public class PlayerManager : MonoBehaviour
         if (grounded) lastGroundedJumpTime = Time.time;
     }
 
-    void OnShield()
-    {
-        
 
+    void StartShield()
+    {
+        isShielded = true;
     }
 
+    void StopShield()
+    {
+        isShielded = false;
+    }
 
     void OnAttackNorth()
     {
@@ -234,8 +242,9 @@ public class PlayerManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isShielded || invinsible) return;
+
         player.TakeDamage(damage);
-        if (isShielded) return;
         health -= damage;
     }
 
