@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 3794272047984473319, guid: aac94aefccf34344e95ae34d870a762f,
     type: 3}
-  playerUIPrefab: {fileID: 138323194181432415, guid: 2baf0c83d4a6c804184b1c7301ad00fb,
+  playerUIPrefab: {fileID: 5335588022189227140, guid: fb39c489d2056e340b0c9ab1d4f54ce4,
     type: 3}
   inputModule: {fileID: 0}
   maxHealth: 100

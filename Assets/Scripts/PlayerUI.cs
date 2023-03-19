@@ -1,12 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerUI : MonoBehaviour
 {
-    public TextMeshProUGUI damageText;
+    public Slider damageSlider;
+    public float maxDamage;
 
     public void SetDamage(float damage)
     {
-        damageText.text = Mathf.Max(0, damage).ToString();
+        damageSlider.value = damage / maxDamage;
     }
 }
